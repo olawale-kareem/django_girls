@@ -1,4 +1,4 @@
-name: hotel management system
+name: django_girls
 on: [push, pull_request]
 
 jobs:
