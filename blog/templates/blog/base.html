@@ -9,13 +9,15 @@
     </head>
     <body>
         <header class="page-header">
-          <div class="container">
-              {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><button type="button" class="btn btn-primary">Add Post</button></a>
-                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"><button type="button" class="btn btn-primary">Unpublished Posts</button></span></a>
-              <h1><a href="#">Django Girls Blog</a></h1>
-              {% endif %}
-          </div>
+                {% if user.is_authenticated %}
+                <a href="{% url 'post_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"><button class="btn btn-secondary"> Home </button></span></a>
+                    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"><button class="btn btn-secondary"> Add post</button></span></a>
+                    <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"><button class="btn btn-secondary"> Unpublised post</button></span></a>
+                    <p class="top-menu">Hello {{ user.username }} <small><a href="{% url 'logout' %}">Log out</a></small></p>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"><small>Log in</small></span></a>
+                {% endif %}
+                <h1><a href="#">Django Girls Blog</a></h1>
         </header>
 
         <main class="container">

@@ -20,11 +20,18 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.auth.views import LoginView, LogoutView
+
 
 urlpatterns = [
     path('blog/', include('blog.urls')),
     path('website/', include('website.urls')),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+
+    # authentication and authorisation
+    path('accounts/login/', LoginView.as_view(), name='login'),
+    path('accounts/logout/', LogoutView.as_view(next_page='/blog/'), name='logout'),
+
 ]
 
 urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
