@@ -11,5 +11,7 @@ User.objects.get(username='mark')            # This queries the superuser for th
 
 # CSS : cascading style sheets
 
+# from django.contrib.auth.decorators import login_required  #to protect your views
+
 
 
