@@ -4,7 +4,7 @@ from django.utils import timezone
 # user authentication and authorisation
 from django.contrib.auth.decorators import login_required
 
-from .models import Post
+from .models import Post,Comment
 from .forms import PostForm, CommentForm
 
 def home(request):
@@ -81,3 +81,15 @@ def add_comment_to_post(request, pk):
         form = CommentForm()
         context = {'form': form}
         return render(request, 'blog/add_comment_to_post.html', context)
+
+@login_required
+def comment_approve(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.approve()
+    return redirect('post_detail', pk=comment.post.pk)
+
+@login_required
+def comment_remove(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.delete()
+    return redirect('post_detail', pk=comment.post.pk)
