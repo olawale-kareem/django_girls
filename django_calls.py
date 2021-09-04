@@ -14,4 +14,20 @@ User.objects.get(username='mark')            # This queries the superuser for th
 # from django.contrib.auth.decorators import login_required  #to protect your views
 
 
+# heroku : more settings
+# $ heroku ps:scale web=1
+# $ heroku open
+# $ heroku run python manage.py migrate
+# $ heroku run python manage.py createsuperuser
+
+
+# # from whitenoise.django import DjangoWhiteNoise
+# application = DjangoWhiteNoise(application)
+
+
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+
+
 
