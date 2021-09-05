@@ -38,14 +38,21 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.spl
 # Application definition
 
 INSTALLED_APPS = [
+    # my apps
+    'apis.apps.ApisConfig',
     'blog.apps.BlogConfig',
-    'website.apps.WebsiteConfig',
+
+    # django preinstalled apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #rest framework
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
