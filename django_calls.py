@@ -93,6 +93,7 @@ User.objects.get(username='mark')            # This queries the superuser for th
 
 
 # todos
+# automatic deploy on heroku ...done
 # finnish github deploy
 # finnish advance git 
 # finnish docker
