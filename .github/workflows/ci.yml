@@ -5,8 +5,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: Django-girls
-    
-
 
     services:
       postgres:
@@ -20,7 +18,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5  
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Get all environment variable
         run: |
@@ -40,9 +38,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run migrations
-        run:  python manage.py migrate
-        env:
-    
+        env:   
           SECRET_KEY: ${{ secrets.SECRET_KEY}}
           DEBUG: ${{ secrets.DEBUG }}
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS}}
@@ -57,6 +53,8 @@ jobs:
           DB_GITHUB_PASSWORD: ${{ secrets.DB_GITHUB_PASSWORD}}
           DB_GITHUB_HOST: ${{ secrets.DB_GITHUB_HOST}}
           DB_GITHUB_PORT: ${{ secrets.DB_GITHUB_PORT}}
+        
+        run:  python manage.py migrate
 
 
 
