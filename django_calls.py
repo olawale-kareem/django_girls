@@ -104,6 +104,6 @@ User.objects.get(username='mark')            # This queries the superuser for th
 
 # finnish docker
 # micro services with kubernatttes
-
+# start project: 
 
 

@@ -4,7 +4,7 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: Django-girls
+    # environment: Django-girls
 
     services:
       postgres:
