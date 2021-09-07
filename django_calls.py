@@ -94,9 +94,16 @@ User.objects.get(username='mark')            # This queries the superuser for th
 
 # todos
 # automatic deploy on heroku ...done
-# finnish github deploy
-# finnish advance git 
+# finnish github deploy  .. on hold
+# finnish advance git   .. done
+# check read up on Ai/machine learning ..done
+# visit expresso to resubmit ... done
+# sunday algorithms strictly ... skipped
+# Ai course by deep learning on coursera.. look into that later. done
+
+
 # finnish docker
 # micro services with kubernatttes
-# visit expresso to resubmit
-# sunday algorithms strictly
+
+
+

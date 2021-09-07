@@ -2,30 +2,9 @@ name: django_girls
 on: [push, pull_request]
 
 jobs:
-
-
-
-
-
   build:
     runs-on: ubuntu-latest
     environment: Django-girls
-    
-    env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY}}
-        DEBUG: ${{ secrets.DEBUG }}
-        ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS}}
-        DB_NAME: ${{ secrets.DB_NAME}}
-        DB_USER: ${{ secrets.DB_USER}}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD}}
-        DB_HOST: ${{ secrets.DB_HOST}}
-        DB_PORT: ${{ secrets.DB_PORT}}
-
-        DB_GITHUB_NAME: ${{ secrets.DB_GITHUB_NAME}}
-        DB_GITHUB_USER: ${{ secrets.DB_GITHUB_USER}}
-        DB_GITHUB_PASSWORD: ${{ secrets.DB_GITHUB_PASSWORD}}
-        DB_GITHUB_HOST: ${{ secrets.DB_GITHUB_HOST}}
-        DB_GITHUB_PORT: ${{ secrets.DB_GITHUB_PORT}}
 
     services:
       postgres:
@@ -39,7 +18,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5  
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Get all environment variable
         run: |
@@ -59,7 +38,24 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run migrations
+        env:   
+          SECRET_KEY: ${{ secrets.SECRET_KEY}}
+          DEBUG: ${{ secrets.DEBUG }}
+          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS}}
+          DB_NAME: ${{ secrets.DB_NAME}}
+          DB_USER: ${{ secrets.DB_USER}}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD}}
+          DB_HOST: ${{ secrets.DB_HOST}}
+          DB_PORT: ${{ secrets.DB_PORT}}
+
+          DB_GITHUB_NAME: ${{ secrets.DB_GITHUB_NAME}}
+          DB_GITHUB_USER: ${{ secrets.DB_GITHUB_USER}}
+          DB_GITHUB_PASSWORD: ${{ secrets.DB_GITHUB_PASSWORD}}
+          DB_GITHUB_HOST: ${{ secrets.DB_GITHUB_HOST}}
+          DB_GITHUB_PORT: ${{ secrets.DB_GITHUB_PORT}}
+        
         run:  python manage.py migrate
+
 
 
 
